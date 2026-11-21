@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Selected Work for Information Design</title>
+<meta name="description" content="Selected design work: impact report, campaign banner, accessible matchday graphics and packaging.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Source+Sans+3:wght@200..900&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<!--
+  HOW TO UPDATE THIS PAGE
+  1. Text: search for  class="todo"  — every highlighted [bracket] is something to fill in or confirm.
+     When you've filled one in, delete the <mark class="todo"> tags around it so the highlight disappears.
+  2. Images: put your images in the folders named in each <img src="...">  (e.g. images/impact-report/01.jpg).
+     Until a file exists you'll see a grey box with the file name on it.
+  3. Adding another image: copy a whole <figure class="shot"> block.
+     Rows: use <div class="row r1"> (one image), <div class="row r2"> (two side by side), <div class="row r3"> (three).
+  4. Adding / removing a project: copy or delete a whole <section class="project"> block, and the matching
+     <li> in the contents list at the top.
+  5. Before publishing, compress images (about 1600px wide, JPG or WebP, a few hundred KB each).
+-->
+
+<style>
+  :root{
+    --paper:#EDEAE2;
+    --paper-2:#E3DFD3;
+    --ink:#16171B;
+    --accent:#2B4BF2;
+    --grey:#5C584D;           /* darker than the portfolio's grey so small text is easier to read */
+    --rule:rgba(22,23,27,0.18);
+    --display:'Space Grotesk', system-ui, sans-serif;
+    --title:'Source Sans 3', system-ui, sans-serif;
+    --body:'Inter', system-ui, sans-serif;
+    --mono:'IBM Plex Mono', ui-monospace, monospace;
+  }
+
+  *{ margin:0; padding:0; box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:var(--body);
+    font-size:18px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{ color:inherit; }
+  img{ max-width:100%; }
+
+  :focus-visible{ outline:3px solid var(--accent); outline-offset:3px; }
+
+  .skip{
+    position:absolute; left:16px; top:-60px;
+    background:var(--ink); color:var(--paper);
+    padding:10px 16px; z-index:100; text-decoration:none;
+    font-family:var(--mono); font-size:13px;
+  }
+  .skip:focus{ top:16px; }
+
+  .wrap{ width:min(1100px, calc(100% - 48px)); margin:0 auto; }
+
+  /* ---------- masthead ---------- */
+  .masthead{ padding:56px 0 24px; border-bottom:1px solid var(--rule); }
+  .eyebrow{
+    font-family:var(--mono); font-size:13px; letter-spacing:0.12em;
+    text-transform:uppercase; color:var(--accent); margin-bottom:20px;
+  }
+  h1{
+    font-family:var(--display); font-weight:600;
+    font-size:clamp(40px, 7vw, 84px); line-height:1.04; letter-spacing:-0.02em;
+  }
+  .intro{ margin-top:28px; max-width:58ch; font-size:19px; color:#2c2d31; }
+
+  /* ---------- contents ---------- */
+  .contents{ padding:40px 0; border-bottom:1px solid var(--rule); }
+  .contents h2{
+    font-family:var(--mono); font-size:13px; letter-spacing:0.12em;
+    text-transform:uppercase; color:var(--grey); font-weight:500; margin-bottom:16px;
+  }
+  .contents ol{
+    list-style:none; counter-reset:c;
+    display:grid; grid-template-columns:repeat(3, max-content); gap:8px 72px;
+  }
+  @media (max-width:700px){ .contents ol{ grid-template-columns:1fr; } }
+  .contents li{ counter-increment:c; }
+  .contents a{
+    display:block; padding:10px 0;
+    text-decoration:none; font-family:var(--mono); font-weight:500; font-size:16px;
+  }
+  .contents a:hover{ color:var(--accent); }
+
+  /* ---------- project ---------- */
+  .project{ padding:80px 0; border-bottom:1px solid var(--rule); }
+  .project-head{
+    display:grid; grid-template-columns:1fr 1.4fr; gap:48px; align-items:start;
+    margin-bottom:48px;
+  }
+  .meta{
+    font-family:var(--mono); font-size:13px; letter-spacing:0.04em;
+    color:var(--grey); text-transform:uppercase; margin-bottom:12px;
+  }
+  .project h2{
+    font-family:var(--title); font-weight:600;
+    font-size:clamp(30px, 4.4vw, 52px); line-height:1.1; letter-spacing:-0.01em;
+  }
+  .bio{ max-width:62ch; }
+  .bio + .bio{ margin-top:1em; }
+  .tags{
+    list-style:none; display:flex; flex-wrap:wrap; gap:8px; margin-top:20px;
+  }
+  .tags li{
+    font-family:var(--mono); font-size:12px; letter-spacing:0.04em;
+    border:1px solid var(--ink); padding:4px 10px;
+  }
+  @media (max-width:800px){ .project-head{ grid-template-columns:1fr; gap:20px; } }
+
+  /* ---------- images ---------- */
+  .gallery{ display:flex; flex-direction:column; gap:48px; }
+  .row{ display:grid; gap:48px; align-items:start; }
+  .r1{ grid-template-columns:1fr; }
+  .r2{ grid-template-columns:1fr 1fr; }
+  .r3{ grid-template-columns:repeat(3, 1fr); }
+  .goal-pair{ grid-template-columns:16fr 7.2fr; }
+  .jacket-pair{ grid-template-columns:1.441fr 1.112fr; }
+  @media (max-width:700px){ .r2, .r3{ grid-template-columns:1fr; } }
+  @media (max-width:700px){ .goal-pair, .jacket-pair{ grid-template-columns:1fr; } }
+
+  /* text box beside an image (Tampax 04-06) */
+  .text-row{ grid-template-columns:minmax(0,1fr) minmax(0,1.25fr); gap:56px; align-items:center; }
+  .text-box{ max-width:44ch; font-size:15px; line-height:1.55; color:#2c2d31; }
+  .text-box p + p{ margin-top:1em; }
+  @media (max-width:700px){ .text-row{ grid-template-columns:1fr; gap:20px; } }
+
+  .shot{ margin:0; }
+  .shot img{ display:block; width:100%; height:auto; }
+  /* grey placeholder box, shown until the real image file exists */
+  .ph{
+    width:100%;
+    aspect-ratio:var(--ar, 4 / 3);
+    background:var(--paper-2);
+    border:1px dashed var(--grey);
+    display:flex; align-items:center; justify-content:center; text-align:center;
+    padding:12px;
+    font-family:var(--mono); font-size:12px; letter-spacing:0.04em; color:var(--grey);
+  }
+  .ph[hidden]{ display:none; }
+  .shot figcaption{
+    margin-top:10px; font-size:15px; line-height:1.45; color:#2c2d31; max-width:70ch;
+  }
+
+  /* highlight for anything you still need to fill in */
+  mark.todo{ background:#FFE98A; color:var(--ink); padding:0 3px; }
+
+  /* ---------- footer ---------- */
+  .foot{ padding:56px 0 72px; }
+  .foot p{ max-width:60ch; }
+  .foot a{ border-bottom:1px solid var(--ink); text-decoration:none; }
+  .foot a:hover{ color:var(--accent); border-color:var(--accent); }
+  .top{
+    display:inline-block; margin-top:32px;
+    font-family:var(--mono); font-size:13px; letter-spacing:0.08em; text-transform:uppercase;
+  }
+
+  @media (prefers-reduced-motion: reduce){ html{ scroll-behavior:auto; } }
+
+  /* ---------- print / save as PDF ---------- */
+  @media print{
+    body{ background:#fff; font-size:11pt; }
+    .skip, .top, .contents{ display:none; }
+    .masthead{ padding:0 0 16pt; }
+    .project{ padding:24pt 0; break-inside:avoid-page; }
+    .shot{ break-inside:avoid; }
+    mark.todo{ background:none; }
+  }
+</style>
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to the work</a>
+
+<header class="masthead">
+  <div class="wrap">
+    <p class="eyebrow">Selected work — Information Designer application</p>
+  </div>
+</header>
+
+<nav class="contents" aria-labelledby="contents-title">
+  <div class="wrap">
+    <h2 id="contents-title">Contents</h2>
+    <ol>
+      <li><a href="#find-my-accounts">Find My Accounts</a></li>
+      <li><a href="#impact-report">Impact Report</a></li>
+      <li><a href="#primary-stars-booklet">Primary Stars Booklet</a></li>
+      <li><a href="#goal-graphics">Goal Graphics</a></li>
+      <li><a href="#give-a-jack-a-jacket">Give a Jack a Jacket</a></li>
+      <li><a href="#tampax">Tampax Redesign</a></li>
+    </ol>
+  </div>
+</nav>
+
+<main id="main">
+
+  <!-- ===================== 1. FIND MY ACCOUNTS ===================== -->
+  <section class="project" id="find-my-accounts" aria-labelledby="find-my-accounts-title">
+    <div class="wrap">
+      <div class="project-head">
+        <div>
+          <p class="meta">Freelance · 2026</p>
+          <h2 id="find-my-accounts-title">Find My Accounts</h2>
+        </div>
+        <div>
+          <p class="bio">Conceptual design for find my accounts, a Chrome browser extension.</p>
+          <p class="bio">Designed with the user in mind, considering how they would navigate the extension and whether they would need assistance via instructions.</p>
+          <p class="bio">Referencing the Web Content Accessibility Guidelines to check colour, contrast and usability.</p>
+          <ul class="tags"><li>Web browser</li><li>UX / UI</li><li>WCAG</li></ul>
+        </div>
+      </div>
+
+      <div class="gallery">
+        <div class="row r2">
+          <figure class="shot">
+            <img src="images/find-my-accounts/01.jpg" alt="" loading="lazy" onerror="this.hidden=true;this.nextElementSibling.hidden=false">
+            <div class="ph" style="--ar:1172 / 1398" hidden>images/find-my-accounts/01.jpg</div>
+          </figure>
+          <figure class="shot">
+            <img src="images/find-my-accounts/02.jpg" alt="" loading="lazy" onerror="this.hidden=true;this.nextElementSibling.hidden=false">
+            <div class="ph" style="--ar:1172 / 1667" hidden>images/find-my-accounts/02.jpg</div>
+          </figure>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== 2. IMPACT REPORT ===================== -->
+  <section class="project" id="impact-report" aria-labelledby="impact-report-title">
+    <div class="wrap">
+      <div class="project-head">
+        <div>
+          <p class="meta">Swansea City AFC Foundation · 2025</p>
+          <h2 id="impact-report-title">Impact Report</h2>
+        </div>
+        <div>
+          <p class="bio">Comprehensive 40-page Impact Report showcasing the impact the Foundation has in the community, distributed to key stakeholders locally and nationally.</p>
+          <p class="bio">The report was text heavy, so I focused on selecting the appropriate typography and strategically highlighting key elements, such as pull quotes and impactful images, to capture the reader's attention and make the report more compelling.</p>
+          <p class="bio">The report required a lot of data visualisation, so I had to develop a number of ways to do this.</p>
+          <ul class="tags"><li>Print</li><li>Brand guidelines</li><li>Data visualisation</li></ul>
+        </div>
+      </div>
+
+      <div class="gallery">
+        <div class="row r2">
+          <figure class="shot">
+            <img src="images/impact-report/01.jpg" alt="" loading="lazy" onerror="this.hidden=true;this.nextElementSibling.hidden=false">
+            <div class="ph" style="--ar:4714 / 3333" hidden>images/impact-report/01.jpg</div>
+          </figure>
+          <figure class="shot">
+            <img src="images/impact-report/02.jpg" alt="" loading="lazy" onerror="this.hidden=true;this.nextElementSibling.hidden=false">
+            <div class="ph" style="--ar:4714 / 3333" hidden>images/impact-report/02.jpg</div>
+          </figure>
+        </div>
+        <div class="row r2">
+          <figure class="shot">
+            <img src="images/impact-report/03.jpg" alt="" loading="lazy" onerror="this.hidden=true;this.nextElementSibling.hidden=false">
+            <div class="ph" style="--ar:4583 / 3241" hidden>images/impact-report/03.jpg</div>
+          </figure>
+          <figure class="shot">
+            <img src="images/impact-report/04.jpg" alt="" loading="lazy" onerror="this.hidden=true;this.nextElementSibling.hidden=false">
+            <div class="ph" style="--ar:4583 / 3241" hidden>images/impact-report/04.jpg</div>
+          </figure>
+        </div>
+        <div class="row r2">
+          <figure class="shot">
+            <img src="images/impact-report/05.jpg" alt="" loading="lazy" onerror="this.hidden=true;this.nextElementSibling.hidden=false">
+            <div class="ph" style="--ar:4714 / 3333" hidden>images/impact-report/05.jpg</div>
+          </figure>
+          <figure class="shot">
+            <img src="images/impact-report/06.jpg" alt="" loading="lazy" onerror="this.hidden=true;this.nextElementSibling.hidden=false">
+            <div class="ph" style="--ar:4714 / 3333" hidden>images/impact-report/06.jpg</div>
+          </figure>
+        </div>
+        <div class="row r2">
+          <figure class="shot">
+            <img src="images/impact-report/07.jpg" alt="" loading="lazy" onerror="this.hidden=true;this.nextElementSibling.hidden=false">
+            <div class="ph" style="--ar:4583 / 3241" hidden>images/impact-report/07.jpg</div>
+          </figure>
+          <figure class="shot">
+            <img src="images/impact-report/08.jpg" alt="" loading="lazy" onerror="this.hidden=true;this.nextElementSibling.hidden=false">
+            <div class="ph" style="--ar:4583 / 3241" hidden>images/impact-report/08.jpg</div>
+          </figure>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== 3. PRIMARY STARS BOOKLET ===================== -->
+  <section class="project" id="primary-stars-booklet" aria-labelledby="primary-stars-title">
+    <div class="wrap">
+      <div class="project-head">
+        <div>
+          <p class="meta">Swansea City AFC Foundation · 2025</p>
+          <h2 id="primary-stars-title">Primary Stars Booklet</h2>
+        </div>
+        <div>
+          <p class="bio">Promotional booklet for Premier League Primary Stars delivered by Swansea Foundation, which uses football to boost physical activity and classroom learning.</p>
+          <p class="bio">Using select typography, imagery and data visualisations to promote what the programme offers and the difference it makes.</p>
+          <p class="bio">Designed in line with the brand guidelines, with a clear layout that keeps every page easy to read.</p>
+          <ul class="tags"><li>Print</li><li>Brand guidelines</li><li>Data visualisation</li></ul>
+        </div>
+      </div>
+
+      <div class="gallery">
+        <div class="row r2">
+          <figure class="shot">
+            <img src="images/primary-stars-booklet/01.jpg" alt="" loading="lazy" onerror="this.hidden=true;this.nextElementSibling.hidden=false">
+            <div class="ph" style="--ar:2364 / 1667" hidden>images/primary-stars-booklet/01.jpg</div>
+          </figure>
+          <figure class="shot">
+            <img src="images/primary-stars-booklet/02.jpg" alt="" loading="lazy" onerror="this.hidden=true;this.nextElementSibling.hidden=false">
+            <div class="ph" style="--ar:2353 / 1667" hidden>images/primary-stars-booklet/02.jpg</div>
+          </figure>
+        </div>
+        <div class="row r2">
+          <figure class="shot">
+            <img src="images/primary-stars-booklet/03.jpg" alt="" loading="lazy" onerror="this.hidden=true;this.nextElementSibling.hidden=false">
+            <div class="ph" style="--ar:2357 / 1667" hidden>images/primary-stars-booklet/03.jpg</div>
+          </figure>
+          <figure class="shot">
+            <img src="images/primary-stars-booklet/04.jpg" alt="" loading="lazy" onerror="this.hidden=true;this.nextElementSibling.hidden=false">
+            <div class="ph" style="--ar:2358 / 1667" hidden>images/primary-stars-booklet/04.jpg</div>
+          </figure>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== 4. GOAL GRAPHICS ===================== -->
+  <section class="project" id="goal-graphics" aria-labelledby="goal-graphics-title">
+    <div class="wrap">
+      <div class="project-head">
+        <div>
+          <p class="meta">Swansea City AFC · 2025</p>
+          <h2 id="goal-graphics-title">Goal Graphics</h2>
+        </div>
+        <div>
+          <p class="bio">Graphics displayed on big screens during match-days.</p>
+          <p class="bio">Using Web Content Accessibility Guidelines and audience insights to ensure graphics were accessible to a wide audience, particularly fans with accessibility needs and visual differences.</p>
+          <ul class="tags"><li>Digital</li><li>Accessibility</li><li>WCAG</li></ul>
+        </div>
+      </div>
+
+      <div class="gallery">
+        <!-- columns sized to the images' proportions so both are the same height -->
+        <div class="row r2 goal-pair">
+          <figure class="shot">
+            <img src="images/goal-graphics/01.jpg" alt="" loading="lazy" onerror="this.hidden=true;this.nextElementSibling.hidden=false">
+            <div class="ph" style="--ar:16 / 9" hidden>images/goal-graphics/01.jpg</div>
+          </figure>
+          <figure class="shot">
+            <img src="images/goal-graphics/02.jpg" alt="" loading="lazy" onerror="this.hidden=true;this.nextElementSibling.hidden=false">
+            <div class="ph" style="--ar:4 / 5" hidden>images/goal-graphics/02.jpg</div>
+          </figure>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== 5. GIVE A JACK A JACKET ===================== -->
+  <section class="project" id="give-a-jack-a-jacket" aria-labelledby="jacket-title">
+    <div class="wrap">
+      <div class="project-head">
+        <div>
+          <p class="meta">Swansea City AFC Foundation · 2024</p>
+          <h2 id="jacket-title">Give a Jack a Jacket</h2>
+        </div>
+        <div>
+          <p class="bio">Donations bin and social media posts for Give a Jack a Jacket campaign, encouraging people to donate coats to those in need.</p>
+          <p class="bio">I designed the campaign to work across print and digital format, keeping the message simple and recognisable whether people saw it in person or on social media.</p>
+          <ul class="tags"><li>Print</li><li>Digital</li><li>Social media</li></ul>
+        </div>
+      </div>
+
+      <div class="gallery">
+        <div class="row r1">
+          <figure class="shot">
+            <img src="images/give-a-jack-a-jacket/01.jpg" alt="" loading="lazy" onerror="this.hidden=true;this.nextElementSibling.hidden=false">
+            <div class="ph" style="--ar:2400 / 1350" hidden>images/give-a-jack-a-jacket/01.jpg</div>
+          </figure>
+        </div>
+        <!-- columns sized to the images' proportions so both are the same height -->
+        <div class="row r2 jacket-pair">
+          <figure class="shot">
+            <img src="images/give-a-jack-a-jacket/02.png" alt="" loading="lazy" onerror="this.hidden=true;this.nextElementSibling.hidden=false">
+            <div class="ph" style="--ar:1700 / 1180" hidden>images/give-a-jack-a-jacket/02.png</div>
+          </figure>
+          <figure class="shot">
+            <img src="images/give-a-jack-a-jacket/03.jpg" alt="" loading="lazy" onerror="this.hidden=true;this.nextElementSibling.hidden=false">
+            <div class="ph" style="--ar:1600 / 1439" hidden>images/give-a-jack-a-jacket/03.jpg</div>
+          </figure>
+        </div>
+        <div class="row r1">
+          <figure class="shot">
+            <img src="images/give-a-jack-a-jacket/04.png" alt="" loading="lazy" onerror="this.hidden=true;this.nextElementSibling.hidden=false">
+            <div class="ph" style="--ar:1574 / 766" hidden>images/give-a-jack-a-jacket/04.png</div>
+          </figure>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== 6. TAMPAX ===================== -->
+  <section class="project" id="tampax" aria-labelledby="tampax-title">
+    <div class="wrap">
+      <div class="project-head">
+        <div>
+          <p class="meta">University · 2024</p>
+          <h2 id="tampax-title">Tampax Redesign</h2>
+        </div>
+        <div>
+          <p class="bio">Packaging redesign of Tampax period products, highly commended project by Creative Conscience Awards 2024.</p>
+          <p class="bio">Taking inspiration from Dante Alighieri's <em>The Divine Comedy</em> as a link between the way some people experience periods and the packaging design itself. People experience periods in different ways, some are on birth control and rarely get them whilst others can suffer from Premenstrual Dysphoric Disorder (PMDD).</p>
+          <ul class="tags"><li>Packaging</li><li>Creative branding</li><li>Conceptual</li></ul>
+        </div>
+      </div>
+
+      <div class="gallery">
+        <div class="row r1">
+          <figure class="shot">
+            <img src="images/tampax/01.jpg" alt="" loading="lazy" onerror="this.hidden=true;this.nextElementSibling.hidden=false">
+            <div class="ph" style="--ar:4 / 3" hidden>images/tampax/01.jpg</div>
+          </figure>
+        </div>
+        <div class="row r2">
+          <figure class="shot">
+            <img src="images/tampax/02.jpg" alt="" loading="lazy" onerror="this.hidden=true;this.nextElementSibling.hidden=false">
+            <div class="ph" style="--ar:4 / 3" hidden>images/tampax/02.jpg</div>
+          </figure>
+          <figure class="shot">
+            <img src="images/tampax/03.jpg" alt="" loading="lazy" onerror="this.hidden=true;this.nextElementSibling.hidden=false">
+            <div class="ph" style="--ar:4 / 3" hidden>images/tampax/03.jpg</div>
+          </figure>
+        </div>
+        <!-- text on the left, image on the right -->
+        <div class="row text-row">
+          <div class="text-box">
+            <p>Inspired by Dante’s Inferno. Here Dante navigates the depths of hell in order to make his way through the earth to the other side. There are 9 circles of hell and in the 9th circle Dante meets Satan; a giant three-headed beast flapping his giant wings.</p>
+            <p>This also represents the pain and suffering that people face during their periods. Some people use the term ‘hell week’ to describe their periods. This can be an extremely painful and distressing time where you can suffer from abdominal pain, headaches and mood swings among others.</p>
+          </div>
+          <figure class="shot">
+            <img src="images/tampax/04.jpg" alt="" loading="lazy" onerror="this.hidden=true;this.nextElementSibling.hidden=false">
+            <div class="ph" style="--ar:1 / 1" hidden>images/tampax/04.jpg</div>
+          </figure>
+        </div>
+        <div class="row text-row">
+          <div class="text-box">
+            <p>Inspired by Dante’s Purgatorio. Dante has just travelled through hell and is ready to make his ascent towards heaven. Purgatory is the condition, process, or place of purification or temporary punishment. There are seven terraces of Purgatory, each one loosely tied to the seven deadly sins, but unlike in Inferno where you are being punished and tortured, here you atone for your sins.</p>
+            <p>During the 7th terrace Dante walks through flames, showing total disregard for his body. This links to the shame and stigma that surrounds periods. Due to gender stereotypes and social taboos that stigmatise menstruation as dirty, many people who menstruate experience shame.</p>
+          </div>
+          <figure class="shot">
+            <img src="images/tampax/05.jpg" alt="" loading="lazy" onerror="this.hidden=true;this.nextElementSibling.hidden=false">
+            <div class="ph" style="--ar:1 / 1" hidden>images/tampax/05.jpg</div>
+          </figure>
+        </div>
+        <div class="row text-row">
+          <div class="text-box">
+            <p>Inspired by Dante’s Paradiso. Dante has reached the peak of Purgatory and is about to ascend through the spheres of heaven, floating higher and higher towards paradise. The last phase is the Empyrean, where Dante sees a rose which represents all divine love. Heaven exists inside this flower. He sees God, seeing three overlapping circles to represent the holy trinity. Circles are believed to be the perfect shape.</p>
+            <p>The rose is symbolic and has connotations of purity, innocence and love. There are links here to the end of the menstrual cycle, where people are rejoicing that they are free from suffering. They have finally made it to paradise.</p>
+          </div>
+          <figure class="shot">
+            <img src="images/tampax/06.jpg" alt="" loading="lazy" onerror="this.hidden=true;this.nextElementSibling.hidden=false">
+            <div class="ph" style="--ar:1 / 1" hidden>images/tampax/06.jpg</div>
+          </figure>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <a class="top" href="#main">↑ Back to top</a>
+  </div>
+</footer>
+
+</body>
+</html>
